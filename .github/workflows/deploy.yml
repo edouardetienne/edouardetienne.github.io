@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (optional, if using a static site generator)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build site (if needed)
+        run: |
+          # Add build commands here if you're using a static site generator
+          # For a plain HTML site, this step can be empty
+          echo "No build step required for plain HTML."
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+
